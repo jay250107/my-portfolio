@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Customise accessibility settings for the jay Kilgour-Hayes portfolio website.">
+
+    <title>Accessibility Settings | jay Kilgour-Hayes</title>
+
+    <!-- Link to the stylesheet and JavaScript -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <!-- Skip link -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+
+            <a class="logo" href="index.html">
+                Online Portfolio
+            </a>
+
+            <button class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                    aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="settings.html" aria-current="page">Settings</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Page heading -->
+        <section class="page-banner">
+            <div class="container">
+                <p class="eyebrow">PERSONALISE YOUR EXPERIENCE</p>
+
+                <h1>Accessibility Settings</h1>
+
+                <p>
+                    Customise the website to make it more comfortable
+                    and accessible for you.
+                </p>
+            </div>
+        </section>
+
+        <!-- Accessibility settings -->
+        <section class="settings-section section-padding">
+            <div class="container settings-container">
+
+                <div class="section-heading">
+                    <h2>Your Preferences</h2>
+
+                    <p>
+                        Choose your text size, colour theme and
+                        announcement preferences. Your choices will
+                        be saved in this browser.
+                    </p>
+                </div>
+
+                <div class="settings-grid">
+
+                    <!-- Text size settings -->
+                    <section class="settings-card"
+                             aria-labelledby="text-size-heading">
+
+                        <div class="settings-card-icon" aria-hidden="true">
+                            Aa
+                        </div>
+
+                        <h3 id="text-size-heading">Text Size</h3>
+
+                        <p>
+                            Choose the text size that is easiest to read.
+                        </p>
+
+                        <fieldset class="setting-fieldset">
+                            <legend>Preferred text size</legend>
+
+                            <label class="setting-option">
+                                <input type="radio"
+                                       name="text-size"
+                                       value="normal"
+                                       checked>
+                                <span>Normal</span>
+                            </label>
+
+                            <label class="setting-option">
+                                <input type="radio"
+                                       name="text-size"
+                                       value="large">
+                                <span>Large</span>
+                            </label>
+
+                            <label class="setting-option">
+                                <input type="radio"
+                                       name="text-size"
+                                       value="extra-large">
+                                <span>Extra large</span>
+                            </label>
+                        </fieldset>
+
+                        <div class="settings-preview">
+                            <strong>Text preview</strong>
+                            <p>
+                                This is an example of how text will
+                                appear across the website.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Colour theme settings -->
+                    <section class="settings-card"
+                             aria-labelledby="theme-heading">
+
+                        <div class="settings-card-icon" aria-hidden="true">
+                            ◐
+                        </div>
+
+                        <h3 id="theme-heading">Colour Theme</h3>
+
+                        <p>
+                            Choose the appearance that is most
+                            comfortable for your eyes.
+                        </p>
+
+                        <fieldset class="setting-fieldset">
+                            <legend>Preferred colour theme</legend>
+
+                            <label class="setting-option">
+                                <input type="radio"
+                                       name="colour-theme"
+                                       value="light"
+                                       checked>
+                                <span>Light mode</span>
+                            </label>
+
+                            <label class="setting-option">
+                                <input type="radio"
+                                       name="colour-theme"
+                                       value="dark">
+                                <span>Dark mode</span>
+                            </label>
+                        </fieldset>
+
+                        <div class="settings-preview">
+                            <strong>Theme preview</strong>
+                            <p>
+                                Your selected theme will apply to
+                                the other portfolio pages too.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Screen reader announcements -->
+                    <section class="settings-card"
+                             aria-labelledby="reader-heading">
+
+                        <div class="settings-card-icon" aria-hidden="true">
+                            SR
+                        </div>
+
+                        <h3 id="reader-heading">Screen Reader Support</h3>
+
+                        <p>
+                            Enable additional announcements for
+                            supported website interactions.
+                        </p>
+
+                        <label class="toggle-option" for="reader-toggle">
+                            <span>
+                                <strong>Enhanced announcements</strong>
+
+                                <span class="toggle-description">
+                                    Provide additional announcements when
+                                    settings or project filters change.
+                                </span>
+                            </span>
+
+                            <input type="checkbox"
+                                   id="reader-toggle"
+                                   role="switch"
+                                   aria-describedby="reader-help">
+                        </label>
+
+                        <p id="reader-help" class="settings-help">
+                            This option adds announcements for compatible
+                            assistive technology. It does not turn on
+                            your device's actual screen reader.
+                        </p>
+                    </section>
+
+                </div>
+
+                <!-- Reset button -->
+                <div class="settings-actions">
+                    <button class="btn btn-primary"
+                            id="reset-settings"
+                            type="button">
+                        Reset Settings
+                    </button>
+                </div>
+
+                <!-- Status message for assistive technology -->
+                <p id="settings-status"
+                   class="settings-status"
+                   role="status"
+                   aria-live="polite"
+                   aria-atomic="true">
+                    Change a setting to customise your experience.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <p>
+                &copy; <span class="current-year">2026</span>
+                jay Kilgour-Hayes
+            </p>
+
+            <a href="settings.html" aria-current="page">
+                Accessibility Settings
+            </a>
+
+        </div>
+    </footer>
+
+</body>
+</html>

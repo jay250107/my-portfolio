@@ -1,0 +1,1176 @@
+
+/* =========================================
+   1. GLOBAL VARIABLES AND RESET
+========================================= */
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --accent-color: #4f46e5;
+    --accent-light: #e0e7ff;
+
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+    --preview-background: #f1f5f9;
+
+    --text-color: #1e293b;
+    --muted-text: #64748b;
+    --border-color: #e2e8f0;
+
+    --header-background: #ffffff;
+    --footer-background: #0f172a;
+    --footer-text: #f8fafc;
+
+    --container-width: 1100px;
+    --section-padding: 80px;
+    --body-font-size: 16px;
+
+    --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    --transition: 0.25s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    font-size: var(--body-font-size);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background-color);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+::selection {
+    color: #ffffff;
+    background: var(--primary-color);
+}
+
+:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   2. CONTAINERS AND SHARED LAYOUT
+========================================= */
+
+.container {
+    width: min(90%, var(--container-width));
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: var(--section-padding);
+}
+
+.section-padding {
+    padding-block: var(--section-padding);
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin-bottom: 14px;
+}
+
+.section-heading p {
+    color: var(--muted-text);
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.muted-text {
+    color: var(--muted-text);
+}
+
+/* =========================================
+   3. SKIP LINK
+========================================= */
+
+.skip-link {
+    position: absolute;
+    z-index: 2000;
+    top: 10px;
+    left: 10px;
+    padding: 12px 18px;
+    color: #ffffff;
+    background: var(--primary-color);
+    border-radius: 8px;
+    transform: translateY(-150%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* =========================================
+   4. HEADER AND NAVIGATION
+========================================= */
+
+.site-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    background: var(--header-background);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    display: inline-block;
+    padding-block: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    color: var(--primary-color);
+}
+
+.nav-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--text-color);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 21px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+/* =========================================
+   5. BUTTONS
+========================================= */
+
+.btn {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 9px;
+    font-weight: 700;
+    text-align: center;
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    color: #ffffff;
+    background: var(--primary-color);
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    color: var(--text-color);
+    background: transparent;
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 26px;
+}
+
+/* =========================================
+   6. HOME PAGE HERO
+========================================= */
+
+.hero {
+    display: flex;
+    min-height: 590px;
+    align-items: center;
+    padding-block: 80px;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    color: var(--primary-color);
+}
+
+.hero-description {
+    max-width: 650px;
+    color: var(--muted-text);
+    font-size: 1.15rem;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 7px 14px;
+    color: var(--primary-color);
+    background: var(--accent-light);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* =========================================
+   7. PAGE BANNER
+========================================= */
+
+.page-banner {
+    padding: 70px 0;
+    background: var(--accent-light);
+    color: var(--text-color);
+}
+
+.page-banner h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+}
+
+.page-banner p {
+    max-width: 720px;
+}
+
+.page-banner .eyebrow {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   8. GENERAL CONTENT SECTIONS
+========================================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 36px;
+}
+
+.content-card {
+    padding: 28px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.content-card h3 {
+    margin-bottom: 14px;
+}
+
+.content-card p {
+    color: var(--muted-text);
+}
+
+.feature-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.feature-list li {
+    padding-left: 28px;
+    position: relative;
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+/* =========================================
+   9. PROJECTS PAGE
+========================================= */
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.filter-btn {
+    padding: 9px 18px;
+    color: var(--text-color);
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
+    color: #ffffff;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.project-card {
+    overflow: hidden;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--preview-background);
+}
+
+.project-card-content {
+    padding: 22px;
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: var(--muted-text);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+    color: var(--primary-color);
+    background: var(--accent-light);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+    font-weight: 700;
+}
+
+/* =========================================
+   10. CONTACT PAGE AND FORMS
+========================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-form {
+    padding: 30px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.contact-info h2,
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--muted-text);
+}
+
+.contact-details {
+    display: grid;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.contact-details a {
+    overflow-wrap: anywhere;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    color: var(--text-color);
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.form-error {
+    margin-top: 6px;
+    color: #b91c1c;
+    font-size: 0.9rem;
+}
+
+.form-status {
+    margin-top: 16px;
+    font-weight: 600;
+}
+
+/* =========================================
+   11. SLIDESHOW
+========================================= */
+
+.slideshow {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--preview-background);
+}
+
+.slideshow img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.slideshow-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+/* =========================================
+   12. ACCESSIBILITY SETTINGS PAGE
+========================================= */
+
+.settings-section {
+    padding-block: 70px;
+}
+
+.settings-container {
+    max-width: 1100px;
+    margin-inline: auto;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.settings-card {
+    min-width: 0;
+    padding: 28px;
+    color: var(--text-color);
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition:
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.settings-card h3 {
+    margin: 14px 0 12px;
+}
+
+.settings-card > p {
+    color: var(--muted-text);
+}
+
+.settings-card-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    background: var(--accent-light);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.setting-fieldset {
+    min-width: 0;
+    margin-top: 22px;
+    padding: 0;
+    border: 0;
+}
+
+.setting-fieldset legend {
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.setting-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-block: 10px;
+    padding: 12px 14px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+        border-color var(--transition),
+        background-color var(--transition);
+}
+
+.setting-option:hover {
+    border-color: var(--primary-color);
+}
+
+.setting-option input {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+}
+
+.setting-option span {
+    font-weight: 600;
+}
+
+.setting-option:focus-within,
+.toggle-option:focus-within {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+.settings-preview {
+    margin-top: 24px;
+    padding: 18px;
+    background: var(--preview-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.settings-preview strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.settings-preview p {
+    margin-bottom: 0;
+    color: var(--muted-text);
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.toggle-description {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted-text);
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.toggle-option input {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.settings-help {
+    margin-top: 14px;
+    color: var(--muted-text);
+    font-size: 0.9rem;
+}
+
+.settings-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.settings-status {
+    min-height: 1.5em;
+    margin-top: 18px;
+    color: var(--muted-text);
+    font-weight: 600;
+}
+
+/* =========================================
+   13. TEXT SIZE ACCESSIBILITY SETTINGS
+========================================= */
+
+html[data-text-size="normal"] {
+    --body-font-size: 16px;
+}
+
+html[data-text-size="large"] {
+    --body-font-size: 18px;
+}
+
+html[data-text-size="extra-large"] {
+    --body-font-size: 20px;
+}
+
+/* =========================================
+   14. DARK THEME
+========================================= */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --background-color: #0f172a;
+    --card-background: #1e293b;
+    --preview-background: #273449;
+
+    --text-color: #f1f5f9;
+    --muted-text: #cbd5e1;
+    --border-color: #475569;
+
+    --header-background: #111827;
+    --footer-background: #020617;
+    --footer-text: #f8fafc;
+
+    --primary-color: #a5b4fc;
+    --primary-hover: #c7d2fe;
+    --accent-color: #a5b4fc;
+    --accent-light: #312e81;
+}
+
+html[data-theme="dark"] body {
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] .nav-links a {
+    color: var(--text-color);
+}
+
+html[data-theme="dark"] .nav-links a:hover,
+html[data-theme="dark"] .nav-links a[aria-current="page"] {
+    color: var(--primary-color);
+}
+
+html[data-theme="dark"] .page-banner {
+    background: #1e293b;
+}
+
+html[data-theme="dark"] .hero-badge,
+html[data-theme="dark"] .project-tags span {
+    color: #e0e7ff;
+    background: #312e81;
+}
+
+html[data-theme="dark"] .btn-primary {
+    color: #111827;
+    background: var(--primary-color);
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+    color: #111827;
+    background: var(--primary-hover);
+}
+
+html[data-theme="dark"] .btn-secondary {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .filter-btn {
+    color: var(--text-color);
+    background: var(--card-background);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .filter-btn:hover,
+html[data-theme="dark"] .filter-btn.active,
+html[data-theme="dark"] .filter-btn[aria-pressed="true"] {
+    color: #111827;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group textarea,
+html[data-theme="dark"] .form-group select {
+    color: var(--text-color);
+    background: var(--card-background);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .settings-card-icon {
+    color: #e0e7ff;
+    background: #312e81;
+}
+
+html[data-theme="dark"] .setting-option,
+html[data-theme="dark"] .toggle-option {
+    background: var(--background-color);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .settings-preview {
+    background: var(--preview-background);
+}
+
+html[data-theme="dark"] .menu-toggle {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .menu-toggle span {
+    background: var(--text-color);
+}
+
+/* =========================================
+   15. FOOTER
+========================================= */
+
+.site-footer {
+    padding: 30px 0;
+    color: var(--footer-text);
+    background: var(--footer-background);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-inner p {
+    margin: 0;
+}
+
+.site-footer a {
+    color: var(--footer-text);
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   16. RESPONSIVE DESIGN: TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+    :root {
+        --section-padding: 60px;
+    }
+
+    .hero-layout {
+        grid-template-columns: 1fr 0.75fr;
+        gap: 30px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+}
+
+/* =========================================
+   17. RESPONSIVE DESIGN: MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    :root {
+        --section-padding: 48px;
+    }
+
+    .navbar {
+        min-height: 68px;
+    }
+
+    /* Show the burger button on mobile. */
+    
+    .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 1002;
+    pointer-events: auto;
+    touch-action: manipulation;
+    }
+
+
+    /* Hide the navigation until the burger is clicked. */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 1001;
+
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+
+        padding: 12px 5% 20px;
+        background: var(--header-background);
+        border: 1px solid var(--border-color);
+        border-top: 0;
+        box-shadow: var(--shadow);
+    }
+
+    /* Must match the class toggled by JavaScript. */
+    .nav-links.is-open {
+        display: flex !important;
+    }
+    
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .nav-links a[aria-current="page"] {
+        text-decoration: none;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-block: 60px;
+    }
+
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero-image {
+        max-width: 320px;
+    }
+
+    .page-banner {
+        padding: 48px 0;
+    }
+
+    .content-grid,
+    .projects-grid,
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-filters {
+        justify-content: flex-start;
+    }
+
+    .settings-section {
+        padding-block: 45px;
+    }
+
+    .settings-card {
+        padding: 22px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 22px;
+    }
+
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .button-group {
+        align-items: stretch;
+    }
+}
+
+/* =========================================
+   18. SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+    html {
+        font-size: 15px;
+    }
+
+    html[data-text-size="large"] {
+        font-size: 17px;
+    }
+
+    html[data-text-size="extra-large"] {
+        font-size: 19px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .settings-card {
+        padding: 18px;
+    }
+
+    .toggle-option {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+    }
+}
+
+/* =========================================
+   19. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
