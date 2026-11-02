@@ -42,6 +42,8 @@ personal-portfolio/
 ├── contact.html
 ├── css/
 │   └── style.css
+├── Javascript/
+│   └── script.js
 ├── js/
 │   └── script.js
 ├── assets/

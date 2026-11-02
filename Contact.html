@@ -9,19 +9,27 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
     <nav class="navbar container" aria-label="Main navigation">
       <a class="logo" href="index.html">Online Portfolio</a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
-        <span></span><span></span><span></span>
+
+      <button class="menu-toggle" type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="Projects.html">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html" aria-current="page">Contact</a></li>
         <li><a href="settings.html">Settings</a></li>
       </ul>
@@ -29,6 +37,7 @@
   </header>
 
   <main id="main">
+
     <section class="page-banner">
       <div class="container">
         <p class="eyebrow">GET IN TOUCH</p>
@@ -38,6 +47,7 @@
     </section>
 
     <section class="section container contact-layout">
+
       <div class="contact-info">
         <p class="eyebrow">CONTACT DETAILS</p>
         <h2>I'd love to hear from you.</h2>
@@ -47,7 +57,9 @@
           <span class="card-icon" aria-hidden="true">@</span>
           <div>
             <h3>Email</h3>
-            <a href="mailto:Kilgourhayes@hotmail.com">Kilgourhayes@hotmail.com</a>
+            <a href="mailto:Kilgourhayes@hotmail.com">
+              Kilgourhayes@hotmail.com
+            </a>
           </div>
         </div>
 
@@ -55,7 +67,11 @@
           <span class="card-icon" aria-hidden="true">in</span>
           <div>
             <h3>LinkedIn</h3>
-            <a href="https://www.linkedin.com/in/jay-kilgour-hayes-48662a418/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+            <a href="https://www.linkedin.com/in/jay-kilgour-hayes-48662a418/"
+               target="_blank"
+               rel="noopener noreferrer">
+              Connect on LinkedIn
+            </a>
           </div>
         </div>
 
@@ -63,52 +79,115 @@
           <span class="card-icon" aria-hidden="true">GH</span>
           <div>
             <h3>GitHub</h3>
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Explore GitHub</a>
+            <a href="https://github.com/"
+               target="_blank"
+               rel="noopener noreferrer">
+              Explore GitHub
+            </a>
           </div>
         </div>
       </div>
 
       <div class="contact-form-card">
         <h2>Send a message</h2>
-        <form id="contact-form" action="https://formsubmit.co/Kilgourhayes@hotmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from your portfolio website">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" class="honey-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <form id="contact-form"
+              action="https://formsubmit.co/Kilgourhayes@hotmail.com"
+              method="POST">
+
+          <input type="hidden"
+                 name="_subject"
+                 value="New message from your portfolio website">
+
+          <input type="hidden"
+                 name="_template"
+                 value="table">
+
+          <!-- Hidden anti-spam honeypot field -->
+          <input type="text"
+                 name="_honey"
+                 class="honey-field"
+                 tabindex="-1"
+                 autocomplete="off"
+                 aria-hidden="true"
+                 hidden>
 
           <div class="form-group">
             <label for="name">Your name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" placeholder="Enter your name">
+            <input id="name"
+                   name="name"
+                   type="text"
+                   autocomplete="name"
+                   required
+                   minlength="2"
+                   maxlength="80"
+                   placeholder="Enter your name">
           </div>
 
           <div class="form-group">
             <label for="email">Email address</label>
-            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+            <input id="email"
+                   name="email"
+                   type="email"
+                   autocomplete="email"
+                   required
+                   maxlength="254"
+                   placeholder="you@example.com">
           </div>
 
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input id="subject" name="subject" type="text" required minlength="3" maxlength="120" placeholder="What is your message about?">
+            <input id="subject"
+                   name="subject"
+                   type="text"
+                   required
+                   minlength="3"
+                   maxlength="120"
+                   placeholder="What is your message about?">
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required minlength="10" maxlength="3000" placeholder="Write your message here..."></textarea>
+            <textarea id="message"
+                      name="message"
+                      rows="5"
+                      required
+                      minlength="10"
+                      maxlength="3000"
+                      placeholder="Write your message here..."></textarea>
           </div>
 
-          <button class="btn btn-primary btn-full" type="submit">Send message</button>
-          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-          <p class="small-note">Your message will be sent to my email address using a contact form service.</p>
+          <button class="btn btn-primary btn-full" type="submit">
+            Send message
+          </button>
+
+          <p id="form-status"
+             class="form-status"
+             role="status"
+             aria-live="polite"></p>
+
+          <p class="small-note">
+            Your message will be sent to my email address using a contact form service.
+          </p>
+
         </form>
       </div>
+
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <a class="logo" href="index.html">Online Portfolio</a>
-      <p>&copy; <span class="current-year">2026</span> Jay Kilgour-Hayes. Built with HTML, CSS and JavaScript.</p>
+
+      <p>
+        &copy; <span class="current-year">2026</span>
+        Jay Kilgour-Hayes. Built with HTML, CSS and JavaScript.
+      </p>
+
       <a href="index.html">Back to home</a>
     </div>
   </footer>
+
 </body>
 </html>
