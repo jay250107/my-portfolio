@@ -421,15 +421,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (slideshowImage) {
         const slides = [
             {
-                src: "assets/images/web1.jpg",
+                src: "Assets/images/web1.jpg",
                 alt: "Web development project 1"
             },
             {
-                src: "assets/images/web2.jpg",
+                src: "Assets/images/web2.jpg",
                 alt: "Web development project 2"
             },
             {
-                src: "assets/images/web3.jpg",
+                src: "Assets/images/web3.jpg",
                 alt: "Web development project 3"
             }
         ];
@@ -462,7 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slideshowImage.style.opacity = "1";
             }, 200);
 
-            slideshowTimer = window.setTimeout(showNextSlide, 3200);
+            slideshowTimer = window.setTimeout(showNextSlide, 2200);
         }
 
         const firstImage = preloadedImages[0];
